@@ -8,3 +8,9 @@
   background-color: var(--background-color);
   padding: 2rem 4rem;
 }
+
+@media only screen and (max-width: 48em) {
+  .header {
+    padding: 2rem;
+  }
+}
