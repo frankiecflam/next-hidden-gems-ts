@@ -1,0 +1,105 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 8rem;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+  text-align: center;
+}
+
+.heading {
+  font-weight: 700;
+  line-height: 110%;
+  font-size: var(--font-size-4);
+}
+
+.heading::first-letter {
+  text-transform: uppercase;
+}
+
+.subHeading {
+  display: flex;
+  column-gap: 2rem;
+  font-size: var(--font-size-3);
+  color: var(--font-color-lighter-2);
+  justify-content: center;
+}
+
+.highlight {
+  color: var(--color-green);
+}
+
+.imageContent {
+  position: relative;
+  height: 50rem;
+}
+
+.heroImage {
+  object-fit: fill;
+}
+
+.discoverBtn {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  padding: 1rem 2rem;
+  font-size: var(--font-size-1);
+  align-self: center;
+  border: none;
+  border-radius: 8px;
+  text-transform: capitalize;
+  box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.discoverBtn:hover {
+  box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.4rem);
+}
+
+.discoverBtn:active {
+  box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(0rem);
+}
+
+@media only screen and (max-width: 36em) {
+  .heroImage {
+    object-fit: cover;
+  }
+
+  .subHeading {
+    font-size: var(--font-size-2);
+  }
+}
+
+@media only screen and (min-width: 62em) {
+  .hero {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+
+  .textContent {
+    text-align: left;
+  }
+
+  .heading {
+    font-size: var(--font-size-5);
+  }
+
+  .subHeading {
+    margin-top: 3rem;
+    display: flex;
+    column-gap: 2rem;
+    font-size: var(--font-size-3);
+    color: var(--font-color-lighter-2);
+    justify-content: flex-start;
+  }
+
+  .discoverBtn {
+    align-self: flex-start;
+  }
+}
