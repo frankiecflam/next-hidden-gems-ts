@@ -8,14 +8,14 @@ import {
   UserIcon,
 } from "../../assets/icons";
 
-const HeaderNavList = () => {
+const HeaderNavList = ({ userId }: { userId: string }) => {
   return (
     <ul className={styles.navList}>
       <HeaderNavItem href="/">{<HomeIcon />}</HeaderNavItem>
       <HeaderNavItem href="/explore">{<ExploreIcon />}</HeaderNavItem>
       <HeaderNavItem href="/collection">{<CollectionIcon />}</HeaderNavItem>
       <HeaderNavItem href="/newgem">{<AddIcon />}</HeaderNavItem>
-      <HeaderNavItem href="/gemmer/1">{<UserIcon />}</HeaderNavItem>
+      <HeaderNavItem href={`/gemmer/${userId}`}>{<UserIcon />}</HeaderNavItem>
     </ul>
   );
 };

@@ -1,12 +1,17 @@
 import { HeaderNavBrand, HeaderNavList, HeaderNavActions } from "./";
 import styles from "./HeaderNav.module.css";
+import { useFirebaseAuthState } from "../../hooks";
 
 const HeaderNav = () => {
+  const [user, loading] = useFirebaseAuthState();
+
+  if (loading) return null;
+
   return (
     <nav className={styles.nav}>
       <HeaderNavBrand />
-      <HeaderNavList />
-      <HeaderNavActions />
+      {user && <HeaderNavList userId={user.uid} />}
+      <HeaderNavActions loggedIn={user ? true : false} />
     </nav>
   );
 };

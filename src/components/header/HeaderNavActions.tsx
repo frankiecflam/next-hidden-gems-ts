@@ -5,7 +5,7 @@ import {
   signOutWithGoogle,
 } from "../../config/firebase";
 
-const HeaderNavActions = () => {
+const HeaderNavActions = ({ loggedIn }: { loggedIn: boolean }) => {
   const router = useRouter();
 
   const handleLogin = async () => {
@@ -24,6 +24,7 @@ const HeaderNavActions = () => {
   const handleLogout = async () => {
     try {
       await signOutWithGoogle();
+
       router.push("/");
     } catch (error: any) {
       console.log("Failed to sign out!");
@@ -32,24 +33,29 @@ const HeaderNavActions = () => {
 
   return (
     <div className={styles.navActions}>
-      <button
-        className={`${styles.navActionsBtn} ${styles.login}`}
-        onClick={handleLogin}
-      >
-        log in
-      </button>
-      <button
-        className={`${styles.navActionsBtn} ${styles.signup}`}
-        onClick={handleLogin}
-      >
-        sign up
-      </button>
-      <button
-        className={`${styles.navActionsBtn} ${styles.logout}`}
-        onClick={handleLogout}
-      >
-        log out
-      </button>
+      {loggedIn ? (
+        <button
+          className={`${styles.navActionsBtn} ${styles.logout}`}
+          onClick={handleLogout}
+        >
+          log out
+        </button>
+      ) : (
+        <>
+          <button
+            className={`${styles.navActionsBtn} ${styles.login}`}
+            onClick={handleLogin}
+          >
+            log in
+          </button>
+          <button
+            className={`${styles.navActionsBtn} ${styles.signup}`}
+            onClick={handleLogin}
+          >
+            sign up
+          </button>
+        </>
+      )}
     </div>
   );
 };
