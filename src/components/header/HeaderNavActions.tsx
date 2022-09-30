@@ -24,6 +24,7 @@ const HeaderNavActions = () => {
   const handleLogout = async () => {
     try {
       await signOutWithGoogle();
+      router.push("/");
     } catch (error: any) {
       console.log("Failed to sign out!");
     }

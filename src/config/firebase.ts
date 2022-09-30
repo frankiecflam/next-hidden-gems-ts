@@ -27,6 +27,6 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const authProvider = new GoogleAuthProvider();
 
-// Sign-in methods
+// Firebase auth methods
 export const signInWithGooglePopup = () => signInWithPopup(auth, authProvider);
 export const signOutWithGoogle = () => signOut(auth);
