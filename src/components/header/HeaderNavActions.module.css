@@ -1,0 +1,42 @@
+.navActions {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+}
+
+.navActionsBtn {
+  padding: 1rem 2rem;
+  font-weight: 500;
+  border: none;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  border-radius: 0.8rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.navActionsBtn:hover {
+  box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.4rem);
+}
+
+.navActionsBtn:active {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  transform: translateY(0rem);
+}
+
+.navActionsBtn.login {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.navActionsBtn.signup {
+  background-color: var(--color-lightgrey);
+  color: var(--font-color-lighter-2);
+}
+
+.navActionsBtn.logout {
+  background-color: var(--color-lightblue);
+  color: var(--color-white);
+}

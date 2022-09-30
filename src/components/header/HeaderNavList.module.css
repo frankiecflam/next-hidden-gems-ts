@@ -1,0 +1,20 @@
+.navList {
+  list-style: none;
+  display: flex;
+  column-gap: 5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 48em) {
+  .navList {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 4rem;
+    justify-content: space-between;
+    z-index: 9999;
+    background-color: var(--background-color);
+  }
+}
