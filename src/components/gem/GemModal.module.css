@@ -1,0 +1,22 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  max-width: 800px;
+  max-height: 80%;
+  padding: 5rem 3rem;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background-color: var(--background-color);
+  overflow-y: auto;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.imageContent {
+  position: relative;
+  height: 480px;
+}

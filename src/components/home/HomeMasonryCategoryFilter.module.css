@@ -1,0 +1,14 @@
+.categoryFilter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 2rem;
+}
+
+.heading {
+  color: var(--font-color-lighter-2);
+  font-weight: 500;
+  font-size: var(--font-size-0);
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid currentColor;
+}

@@ -4,7 +4,7 @@ import { collection, getDocs, DocumentData } from "firebase/firestore";
 import { db } from "../../src/config/firebase";
 
 type Data = {
-  categories?: DocumentData[];
+  gems?: DocumentData[];
   error?: any;
 };
 
@@ -16,12 +16,12 @@ export default async function handler(
     return res.status(400).json({ error: "Only GET method is allowed!" });
 
   try {
-    const categoryRef = collection(db, "categories");
+    const gemRef = collection(db, "gems");
 
-    const querySnapshot = await getDocs(categoryRef);
+    const querySnapshot = await getDocs(gemRef);
 
     if (querySnapshot.empty)
-      throw new Error("No matching documents in categories collection");
+      throw new Error("No matching documents in gems collection");
 
     let docs: DocumentData[] = [];
 
@@ -29,8 +29,8 @@ export default async function handler(
       docs.push(doc.data());
     });
 
-    res.status(200).json({ categories: docs });
+    res.status(200).json({ gems: docs });
   } catch (error: any) {
-    res.status(500).json({ error });
+    res.status(400).json({ error });
   }
 }

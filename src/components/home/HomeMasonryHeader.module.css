@@ -1,0 +1,7 @@
+.header {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+  border-bottom: 2px solid var(--color-lightgrey);
+}

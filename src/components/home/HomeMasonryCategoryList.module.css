@@ -1,0 +1,10 @@
+.categoryList {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  column-gap: 5rem;
+  font-size: var(--font-size-1);
+  color: var(--font-color-lighter-1);
+  flex-wrap: wrap;
+  row-gap: 3rem;
+}

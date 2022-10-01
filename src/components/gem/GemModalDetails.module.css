@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+  padding-bottom: 3rem;
+  border-bottom: 2px solid var(--color-lightgrey);
+}
+
+.gemmerImage {
+  border-radius: 100%;
+}
+
+.gemmerUsername {
+  color: var(--font-color-lighter-1);
+}
+
+.gemmerImage,
+.gemmerUsername {
+  cursor: pointer;
+}
+
+.body {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.gemDate {
+  color: var(--font-color-lighter-3);
+  font-size: var(--font-size-xs);
+}
+
+.gemTitle {
+  font-size: var(--font-size-2);
+}
+
+.gemDescription {
+  margin-top: 2rem;
+  color: var(--font-color-lighter-2);
+  line-height: 120%;
+}

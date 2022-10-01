@@ -1,0 +1,26 @@
+.searchBar {
+  position: relative;
+  border-radius: 1rem;
+  background-color: #e1e1e1;
+  overflow: hidden;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  color: currentColor;
+}
+
+.input {
+  width: 100%;
+  font-size: var(--font-size-1);
+  color: var(--font-color-lighter-1);
+  padding: 1rem 4rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 1rem;
+}
