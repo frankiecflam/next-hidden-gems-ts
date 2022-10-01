@@ -5,7 +5,7 @@ import { db } from "../../src/config/firebase";
 
 type Data = {
   categories?: DocumentData[];
-  error?: string;
+  error?: any;
 };
 
 export default async function handler(
@@ -20,6 +20,9 @@ export default async function handler(
 
     const querySnapshot = await getDocs(categoryRef);
 
+    if (!querySnapshot)
+      throw new Error("Failed to fetch categories from the Firestore!");
+
     let docs: DocumentData[] = [];
 
     querySnapshot.forEach((doc) => {
@@ -27,7 +30,7 @@ export default async function handler(
     });
 
     res.status(200).json({ categories: docs });
-  } catch (error) {
-    res.status(400).json({ error: "Failed to fetch data from the Firestore!" });
+  } catch (error: any) {
+    res.status(500).json({ error });
   }
 }
