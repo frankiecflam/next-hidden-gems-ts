@@ -4,7 +4,7 @@ import Head from "next/head";
 import { useFirebaseAuthState } from "../src/hooks";
 import { HomeMasonry } from "../src/components/home";
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
   const [user, loading] = useFirebaseAuthState();
 
   if (loading) return null;
@@ -18,9 +18,9 @@ const Home: NextPage = () => {
           content="A social media platform where you discover hundreds of hidden gems from people all over the world."
         />
       </Head>
-      <div>{user ? <HomeMasonry /> : <Hero />}</div>
+      <div>{user ? <HomeMasonry loggedInUserId={user.uid} /> : <Hero />}</div>
     </>
   );
 };
 
-export default Home;
+export default HomePage;

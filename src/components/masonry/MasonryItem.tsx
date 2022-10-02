@@ -8,21 +8,28 @@ import { CollectionFilledIcon } from "../../assets/icons";
 import { checkCollectionForGem } from "../../utils/helpers";
 import { query, where, collection, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import { useUpdateGemmer } from "../../hooks";
+import { useUpdateCurrentUser } from "../../hooks";
 
 interface MasonryItemProps {
   gem: GemType;
   gemmer: GemmerType;
+  currentUser: GemmerType;
 }
 
-const MasonryItem = ({ gem, gemmer }: MasonryItemProps) => {
+const MasonryItem = ({ gem, gemmer, currentUser }: MasonryItemProps) => {
   const [showGemModal, setShowGemModal] = useState(false);
 
-  const isGemInCollection = checkCollectionForGem(gemmer.collection, gem.id);
-  const { mutate: mutateGemmer } = useUpdateGemmer();
+  const isGemInCollection = checkCollectionForGem(
+    currentUser.collection,
+    gem.id
+  );
+  const { mutate: mutateCurrentUser } = useUpdateCurrentUser();
 
   const handleUpdateCollection = async () => {
-    const q = query(collection(db, "gemmers"), where("id", "==", gemmer.id));
+    const q = query(
+      collection(db, "gemmers"),
+      where("id", "==", currentUser.id)
+    );
 
     const querySnapshot = await getDocs(q);
 
@@ -31,15 +38,15 @@ const MasonryItem = ({ gem, gemmer }: MasonryItemProps) => {
       return;
     }
 
-    querySnapshot.forEach((doc) => {
-      const updatedGemmerInfo: GemmerType = {
-        ...gemmer,
-        collection: isGemInCollection
-          ? gemmer.collection.filter((gemId) => gemId !== gem.id)
-          : [...gemmer.collection, gem.id],
-      };
-      mutateGemmer({ gemmer: updatedGemmerInfo, docId: doc.id });
-    });
+    const docId = querySnapshot.docs[0].id;
+    const updatedUserInfo: GemmerType = {
+      ...currentUser,
+      collection: isGemInCollection
+        ? currentUser.collection.filter((gemId) => gemId !== gem.id)
+        : [...currentUser.collection, gem.id],
+    };
+
+    mutateCurrentUser({ currentUser: updatedUserInfo, docId });
   };
 
   return (

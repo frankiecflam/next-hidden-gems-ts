@@ -57,7 +57,7 @@ export default async function handler(
       let docs: DocumentData[] = [];
 
       querySnapshot.forEach((doc) => {
-        docs.push({ documentId: doc.id, ...doc.data() });
+        docs.push(doc.data());
       });
 
       return res.status(200).json({ gemmers: docs });

@@ -4,7 +4,7 @@ import Gemmer from "../types/gemmer";
 
 const useUpdateGemmer = () => {
   const queryClient = useQueryClient();
-  // documentId will be in the DB. That's the problem.
+
   return useMutation(
     ({ gemmer, docId }: { gemmer: Gemmer; docId: string }) =>
       axios

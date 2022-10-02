@@ -1,14 +1,14 @@
 import { HomeMasonryHeader } from "./";
 import { ChangeEvent, useState } from "react";
 import { Masonry, MasonryEmpty } from "../masonry";
-import { useGems, useGemmers } from "../../hooks";
+import { useGems, useGemmers, useCurrentUser } from "../../hooks";
 import {
   filterGemsByCategory,
   filterGemsBySearchTerm,
 } from "../../utils/helpers";
 import Category from "../../types/category";
 
-const HomeMasonry = () => {
+const HomeMasonry = ({ loggedInUserId }: { loggedInUserId: string }) => {
   const [categoryFilter, setCategoryFilter] = useState<Category>({
     id: "",
     name: "all",
@@ -25,10 +25,24 @@ const HomeMasonry = () => {
     data: gemmers,
   } = useGemmers();
 
-  if (gemsIsLoading || gemmersIsLoading) return null;
+  const {
+    isLoading: currentUserIsLoading,
+    error: currentUserLoadingError,
+    data: currentUser,
+  } = useCurrentUser(loggedInUserId);
+
+  if (gemsIsLoading || gemmersIsLoading || currentUserIsLoading) return null;
 
   if (gemsLoadingerror || gemmersLoadingerror || !gems || !gemmers)
     return <div>Something went wrong fetching gems from the database!</div>;
+
+  if (currentUserLoadingError || !currentUser) {
+    return (
+      <div>
+        Something went wrong fetching the data of currently-logged-in user!
+      </div>
+    );
+  }
 
   let filteredGems = gems;
   if (categoryFilter) {
@@ -51,7 +65,11 @@ const HomeMasonry = () => {
       {filteredGems.length === 0 ? (
         <MasonryEmpty category={categoryFilter} searchTerm={searchTerm} />
       ) : (
-        <Masonry gems={filteredGems} gemmers={gemmers} />
+        <Masonry
+          gems={filteredGems}
+          gemmers={gemmers}
+          currentUser={currentUser}
+        />
       )}
     </section>
   );

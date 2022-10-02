@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 
-const NewGem: NextPage = () => {
+const NewGemPage: NextPage = () => {
   return <div>NewGem Page</div>;
 };
 
-export default NewGem;
+export default NewGemPage;
