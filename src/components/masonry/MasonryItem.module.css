@@ -9,8 +9,7 @@
   right: 5%;
   z-index: 1;
   font-size: var(--font-size-xs);
-  color: var(--color-white);
-  transform: scale(0);
+  color: var(--color-lightgrey);
   transform-origin: left;
 }
 
@@ -25,21 +24,12 @@
   top: 3%;
   right: 5%;
   z-index: 1;
-  transform: scale(0);
   font-size: var(--font-size-1);
   fill: var(--color-white);
 }
 
 .collectionIcon.filled {
   fill: var(--color-red);
-}
-
-.masonryItem:hover .gemImage {
-  filter: blur(1.5px) brightness(0.8);
-}
-
-.masonryItem:hover :is(.gemmerName, .collectionIcon) {
-  transform: scale(1);
 }
 
 .masonryItem:hover .collectionIcon.filled {
@@ -61,5 +51,24 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@media (hover: hover) {
+  .gemmerName,
+  .collectionIcon {
+    transform: scale(0);
+  }
+
+  .gemmerName {
+    color: var(--color-white);
+  }
+
+  .masonryItem:hover :is(.gemmerName, .collectionIcon) {
+    transform: scale(1);
+  }
+
+  .masonryItem:hover .gemImage {
+    filter: blur(1.5px) brightness(0.8);
   }
 }
