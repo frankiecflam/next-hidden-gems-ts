@@ -51,6 +51,7 @@ const useInput = ({ initialValue, inputValidate }: UseInput) => {
   const [inputState, inputDispatch] = useReducer(inputReducer, {
     ...initialInputState,
     inputValue: initialValue,
+    inputIsValid: inputValidate(initialValue),
   });
 
   const handleInputChange = (

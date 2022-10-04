@@ -7,3 +7,4 @@ export { default as GemmerInfo } from "./GemmerInfo";
 export { default as GemmerRelationship } from "./GemmerRelationship";
 export { default as GemmerRelationshipModal } from "./GemmerRelationshipModal";
 export { default as GemmerRelationshipUpdateBtn } from "./GemmerRelationshipUpdateBtn";
+export { default as GemmerProfileEditForm } from "./GemmerProfileEditForm";

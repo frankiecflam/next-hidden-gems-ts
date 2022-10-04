@@ -3,6 +3,6 @@
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   align-items: center;
   padding: 2rem 0;
-  border-bottom: 2px solid #ededed;
+  border-bottom: 2px solid var(--color-lightgrey);
   row-gap: 3rem;
 }

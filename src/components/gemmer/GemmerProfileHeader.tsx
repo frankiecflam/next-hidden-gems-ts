@@ -5,11 +5,13 @@ import Gemmer from "../../types/gemmer";
 interface GemmerProfileHeaderProps {
   gemmer: Gemmer;
   currentUser: Gemmer;
+  onShowEdit: () => void;
 }
 
 const GemmerProfileHeader = ({
   gemmer,
   currentUser,
+  onShowEdit,
 }: GemmerProfileHeaderProps) => {
   const isGemmertheCurrentUser = gemmer.id === currentUser.id;
 
@@ -19,19 +21,10 @@ const GemmerProfileHeader = ({
         gemmer={gemmer}
         currentUser={currentUser}
         isGemmertheCurrentUser={isGemmertheCurrentUser}
+        onShowEdit={onShowEdit}
       />
     </header>
   );
 };
 
 export default GemmerProfileHeader;
-
-/* 
-What we need for this component?
-
-
--- Do we need to determine if currentUser == gemmer?
-- Yes, because edit button should be enabled to allow user updating its info
-  - If they are not, followBtn and unfollowBtn should be conditionally rendered based on their following relationship
-
-*/

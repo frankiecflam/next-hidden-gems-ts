@@ -11,12 +11,14 @@ interface GemmerInfoProps {
   gemmer: Gemmer;
   currentUser: Gemmer;
   isGemmertheCurrentUser: boolean;
+  onShowEdit: () => void;
 }
 
 const GemmerInfo = ({
   gemmer,
   currentUser,
   isGemmertheCurrentUser,
+  onShowEdit,
 }: GemmerInfoProps) => {
   const [showFollowingModal, setShowFollowingModal] = useState(false);
   const [showFollowersModal, setShowFollowersModal] = useState(false);
@@ -137,7 +139,7 @@ const GemmerInfo = ({
             )
           ) : (
             <GemmerRelationshipUpdateBtn
-              onClick={() => {}}
+              onClick={onShowEdit}
               className={styles.editBtn}
             >
               edit

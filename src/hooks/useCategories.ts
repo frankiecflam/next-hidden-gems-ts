@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Category } from "../types";
+import Category from "../../src/types/category";
 
 const useCategories = () => {
   return useQuery(

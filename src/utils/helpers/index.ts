@@ -6,3 +6,5 @@ export { default as formatDate } from "./formatDate";
 export { default as getGemsWithIds } from "./getGemsWithIds";
 export { default as sortGemsByDate } from "./sortGemsByDate";
 export { default as sortGemsByCategory } from "./sortGemsByCategory";
+export { default as validateUsernameInput } from "./validateUsernameInput";
+export { default as uploadImageFileToFirebaseStorage } from "./UploadImageFileToFirebaseStorage";

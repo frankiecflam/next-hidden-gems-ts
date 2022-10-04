@@ -1,6 +1,12 @@
 import styles from "./GemmerProfile.module.css";
 import { useGemmer } from "../../hooks";
-import { GemmerNotFound, GemmerProfileHeader, GemmerMasonry } from "./";
+import {
+  GemmerNotFound,
+  GemmerProfileHeader,
+  GemmerMasonry,
+  GemmerProfileEditForm,
+} from "./";
+import { useState } from "react";
 
 const GemmerProfile = ({
   queryId,
@@ -20,6 +26,8 @@ const GemmerProfile = ({
     error: currentUserLoadingError,
     data: currentUser,
   } = useGemmer(loggedInUserId);
+
+  const [showEditForm, setShowEditForm] = useState(false);
 
   if (gemmerIsLoading || currentUserIsLoading) return null;
 
@@ -44,7 +52,18 @@ const GemmerProfile = ({
         <GemmerNotFound queryId={queryId} />
       ) : (
         <>
-          <GemmerProfileHeader gemmer={gemmer} currentUser={currentUser} />
+          {showEditForm ? (
+            <GemmerProfileEditForm
+              onCloseEdit={() => setShowEditForm(false)}
+              gemmer={gemmer}
+            />
+          ) : (
+            <GemmerProfileHeader
+              gemmer={gemmer}
+              currentUser={currentUser}
+              onShowEdit={() => setShowEditForm(true)}
+            />
+          )}
           <GemmerMasonry currentUser={currentUser} gemmer={gemmer} />
         </>
       )}
