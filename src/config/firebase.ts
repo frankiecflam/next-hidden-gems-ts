@@ -7,6 +7,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDOGTaZgByOFjzyRViNrvP5JDc2_5edPDk",
@@ -30,3 +31,6 @@ export const signOutWithGoogle = () => signOut(auth);
 
 // Firestore
 export const db = getFirestore(app);
+
+// Firebase Storage
+export const storage = getStorage(app);
