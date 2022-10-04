@@ -1,0 +1,73 @@
+.gemmerInfo {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding: 2rem 0;
+  grid-row-gap: 3rem;
+  row-gap: 3rem;
+  column-gap: 5rem;
+}
+
+.gemmerImageContainer {
+  justify-self: center;
+}
+
+.gemmerImage {
+  border-radius: 100%;
+}
+
+.gemmerDetails {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  align-items: center;
+}
+
+.gemmerUsername {
+  font-weight: 600;
+  font-size: var(--font-size-2);
+}
+
+.gemmerInfoFlex {
+  display: flex;
+  column-gap: 2rem;
+  align-items: center;
+}
+
+.gemmerInfoNum {
+  font-weight: 600;
+}
+
+.followers,
+.following {
+  cursor: pointer;
+}
+
+.followBtn {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+.unfollowBtn {
+  background-color: var(--color-lightblue);
+  color: var(--color-white);
+}
+
+.editBtn {
+  background-color: var(--color-darkgrey);
+  color: var(--color-white);
+}
+
+@media only screen and (min-width: 48em) {
+  .gemmerInfo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gemmerImageContainer {
+    justify-self: flex-end;
+  }
+
+  .gemmerDetails {
+    align-items: flex-start;
+  }
+}

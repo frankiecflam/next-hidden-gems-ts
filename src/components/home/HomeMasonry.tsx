@@ -1,7 +1,7 @@
-import { HomeMasonryHeader } from "./";
+import { HomeMasonryHeader, HomeMasonryEmpty } from "./";
 import { ChangeEvent, useState } from "react";
-import { Masonry, MasonryEmpty } from "../masonry";
-import { useGems, useGemmers, useCurrentUser } from "../../hooks";
+import { Masonry } from "../masonry";
+import { useGems, useGemmers, useGemmer } from "../../hooks";
 import {
   filterGemsByCategory,
   filterGemsBySearchTerm,
@@ -16,12 +16,12 @@ const HomeMasonry = ({ loggedInUserId }: { loggedInUserId: string }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const {
     isLoading: gemsIsLoading,
-    error: gemsLoadingerror,
+    error: gemsLoadingError,
     data: gems,
   } = useGems();
   const {
     isLoading: gemmersIsLoading,
-    error: gemmersLoadingerror,
+    error: gemmersLoadingError,
     data: gemmers,
   } = useGemmers();
 
@@ -29,11 +29,11 @@ const HomeMasonry = ({ loggedInUserId }: { loggedInUserId: string }) => {
     isLoading: currentUserIsLoading,
     error: currentUserLoadingError,
     data: currentUser,
-  } = useCurrentUser(loggedInUserId);
+  } = useGemmer(loggedInUserId);
 
   if (gemsIsLoading || gemmersIsLoading || currentUserIsLoading) return null;
 
-  if (gemsLoadingerror || gemmersLoadingerror || !gems || !gemmers)
+  if (gemsLoadingError || gemmersLoadingError || !gems || !gemmers)
     return <div>Something went wrong fetching gems from the database!</div>;
 
   if (currentUserLoadingError || !currentUser) {
@@ -63,7 +63,7 @@ const HomeMasonry = ({ loggedInUserId }: { loggedInUserId: string }) => {
         searchTerm={searchTerm}
       />
       {filteredGems.length === 0 ? (
-        <MasonryEmpty category={categoryFilter} searchTerm={searchTerm} />
+        <HomeMasonryEmpty category={categoryFilter} searchTerm={searchTerm} />
       ) : (
         <Masonry
           gems={filteredGems}

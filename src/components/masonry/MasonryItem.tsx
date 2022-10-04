@@ -8,7 +8,7 @@ import { CollectionFilledIcon } from "../../assets/icons";
 import { checkCollectionForGem } from "../../utils/helpers";
 import { query, where, collection, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import { useUpdateCurrentUser } from "../../hooks";
+import { useUpdateGemmer } from "../../hooks";
 
 interface MasonryItemProps {
   gem: GemType;
@@ -23,7 +23,7 @@ const MasonryItem = ({ gem, gemmer, currentUser }: MasonryItemProps) => {
     currentUser.collection,
     gem.id
   );
-  const { mutate: mutateCurrentUser } = useUpdateCurrentUser();
+  const { mutate: mutateCurrentUser } = useUpdateGemmer();
 
   const handleUpdateCollection = async () => {
     const q = query(
@@ -46,7 +46,7 @@ const MasonryItem = ({ gem, gemmer, currentUser }: MasonryItemProps) => {
         : [...currentUser.collection, gem.id],
     };
 
-    mutateCurrentUser({ currentUser: updatedUserInfo, docId });
+    mutateCurrentUser({ mutatedGemmer: updatedUserInfo, docId });
   };
 
   return (

@@ -1,0 +1,14 @@
+.notFound {
+  width: 100%;
+}
+
+.heading {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #646464;
+  font-weight: 500;
+}
+
+.queryId {
+  overflow-wrap: break-word;
+}

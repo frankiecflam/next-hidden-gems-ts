@@ -1,6 +1,6 @@
-import styles from "./CollectionEmpty.module.css";
+import styles from "./CollectionMasonryEmpty.module.css";
 
-const CollectionEmpty = () => {
+const CollectionMasonryEmpty = () => {
   return (
     <div className={styles.empty}>
       <h1 className={styles.heading}>Your collection is currently empty!</h1>
@@ -8,4 +8,4 @@ const CollectionEmpty = () => {
   );
 };
 
-export default CollectionEmpty;
+export default CollectionMasonryEmpty;

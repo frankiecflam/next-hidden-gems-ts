@@ -3,6 +3,6 @@ export { default as filterGemsBySearchTerm } from "./filterGemsBySearchTerm";
 export { default as checkCollectionForGem } from "./checkCollectionForGem";
 export { default as convertTimestampToDate } from "./convertTimestampToDate";
 export { default as formatDate } from "./formatDate";
-export { default as getGemWithCollectionId } from "./getGemWithCollectionId";
+export { default as getGemsWithIds } from "./getGemsWithIds";
 export { default as sortGemsByDate } from "./sortGemsByDate";
 export { default as sortGemsByCategory } from "./sortGemsByCategory";

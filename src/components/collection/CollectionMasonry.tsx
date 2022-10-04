@@ -1,10 +1,10 @@
 import styles from "./CollectionMasonry.module.css";
-import { CollectionMasonryHeader, CollectionEmpty } from "./";
+import { CollectionMasonryHeader, CollectionMasonryEmpty } from "./";
 import { ChangeEvent, useState } from "react";
 import { Masonry } from "../masonry";
-import { useGems, useGemmers, useCurrentUser } from "../../hooks";
+import { useGems, useGemmers, useGemmer } from "../../hooks";
 import {
-  getGemWithCollectionId,
+  getGemsWithIds,
   sortGemsByDate,
   sortGemsByCategory,
 } from "../../utils/helpers";
@@ -16,13 +16,13 @@ const CollectionMasonry = ({ loggedInUserId }: { loggedInUserId: string }) => {
 
   const {
     isLoading: gemsIsLoading,
-    error: gemsLoadingerror,
+    error: gemsLoadingError,
     data: gems,
   } = useGems();
 
   const {
     isLoading: gemmersIsLoading,
-    error: gemmersLoadingerror,
+    error: gemmersLoadingError,
     data: gemmers,
   } = useGemmers();
 
@@ -30,11 +30,11 @@ const CollectionMasonry = ({ loggedInUserId }: { loggedInUserId: string }) => {
     isLoading: currentUserIsLoading,
     error: currentUserLoadingError,
     data: currentUser,
-  } = useCurrentUser(loggedInUserId);
+  } = useGemmer(loggedInUserId);
 
   if (gemsIsLoading || gemmersIsLoading || currentUserIsLoading) return null;
 
-  if (gemsLoadingerror || gemmersLoadingerror || !gems || !gemmers)
+  if (gemsLoadingError || gemmersLoadingError || !gems || !gemmers)
     return <div>Something went wrong fetching gems from the database!</div>;
 
   if (currentUserLoadingError || !currentUser) {
@@ -45,7 +45,7 @@ const CollectionMasonry = ({ loggedInUserId }: { loggedInUserId: string }) => {
     );
   }
 
-  const gemCollection = getGemWithCollectionId(currentUser.collection, gems);
+  const gemCollection = getGemsWithIds(currentUser.collection, gems);
 
   const sortedGemCollection =
     sortingCriterion === "DATE"
@@ -70,7 +70,7 @@ const CollectionMasonry = ({ loggedInUserId }: { loggedInUserId: string }) => {
         sortingCriterion={sortingCriterion}
       />
       {gemCollection.length === 0 ? (
-        <CollectionEmpty />
+        <CollectionMasonryEmpty />
       ) : (
         <Masonry
           gems={sortedGemCollection}

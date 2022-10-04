@@ -2,24 +2,22 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import Gemmer from "../types/gemmer";
 
-const useUpdateCurrentUser = () => {
+const useUpdateGemmer = () => {
   const queryClient = useQueryClient();
 
   return useMutation(
-    ({ currentUser, docId }: { currentUser: Gemmer; docId: string }) =>
+    ({ mutatedGemmer, docId }: { mutatedGemmer: Gemmer; docId: string }) =>
       axios
-        .patch("/api/gemmers", { gemmer: currentUser, docId })
+        .patch("/api/gemmers", { gemmer: mutatedGemmer, docId })
         .then((res) => {
           const { gemmers }: { gemmers: Gemmer[] } = res.data;
 
           const currentGemmer = gemmers.find(
-            (gemmer) => gemmer.id === currentUser.id
+            (gemmer) => gemmer.id === mutatedGemmer.id
           );
 
           if (!currentGemmer)
-            throw new Error(
-              "No matching gemmers with the id of the current user!"
-            );
+            throw new Error("No matching gemmers with the gemmer id given!");
 
           return currentGemmer;
         }),
@@ -34,4 +32,4 @@ const useUpdateCurrentUser = () => {
   );
 };
 
-export default useUpdateCurrentUser;
+export default useUpdateGemmer;

@@ -1,0 +1,51 @@
+.modal {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  min-width: 300px;
+  min-height: 400px;
+  max-height: 80%;
+  padding: 5rem 3rem;
+  z-index: 9999;
+  transform: translateX(-50%);
+  background-color: var(--background-color);
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.heading {
+  font-size: var(--font-size-2);
+  color: var(--font-color-lighter-2);
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-align: center;
+  padding: 1rem 0;
+  border-bottom: 2px solid var(--color-lightgrey);
+  text-transform: capitalize;
+}
+
+.gemmerList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+}
+
+.gemmerItem {
+  display: flex;
+  column-gap: 3rem;
+  align-items: center;
+}
+
+.noGemmers {
+  font-size: var(--font-size-1);
+  color: var(--font-color-lighter-1);
+  text-align: center;
+}
+
+.gemmerImage {
+  border-radius: 100%;
+}

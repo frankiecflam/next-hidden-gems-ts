@@ -11,6 +11,7 @@ const CollectionPage: NextPage = () => {
   /*This page is protected.*/
   if (!user && !isLoading) {
     router.push("/");
+    return null;
   }
 
   return (

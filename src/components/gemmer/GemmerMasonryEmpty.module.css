@@ -1,0 +1,10 @@
+.empty {
+  margin-top: 5rem;
+}
+
+.heading {
+  color: var(--font-color-lighter-2);
+  font-weight: 500;
+  font-size: var(--font-size-2);
+  text-align: center;
+}
