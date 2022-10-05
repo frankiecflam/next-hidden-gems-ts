@@ -130,7 +130,7 @@ const GemmerProfileEditForm = ({
           />
         </div>
         <button className={styles.submitBtn} type="submit">
-          submit
+          save
         </button>
       </div>
     </form>
