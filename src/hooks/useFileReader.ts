@@ -25,10 +25,16 @@ const useFileReader = () => {
     console.log("Failed to get the fileData during onFileInputChange event!");
   };
 
+  const handleFileInputReset = () => {
+    setFile(null);
+    setFileDataUrl("");
+  };
+
   return {
     file,
     fileDataUrl,
     onFileChange: handleFileInputChange,
+    onFileReset: handleFileInputReset,
   };
 };
 
