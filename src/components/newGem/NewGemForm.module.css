@@ -1,0 +1,112 @@
+.form {
+  position: relative;
+  padding: 2rem;
+  color: var(--font-color-lighter-2);
+  display: flex;
+  flex-direction: column;
+  row-gap: 5rem;
+  padding: 5rem 2rem;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5rem;
+}
+
+.body :is(input, textarea, select) {
+  padding: 1rem;
+  border: none;
+  border-bottom: 2px solid currentColor;
+  color: var(--font-color-lighter-3);
+  width: 100%;
+  outline: none;
+  transition: all 0.4s;
+}
+
+.body :is(input, textarea)::placeholder,
+.body .categorySelect {
+  text-transform: capitalize;
+}
+
+.body :is(input, textarea, select):focus {
+  color: var(--font-color-lighter-1);
+}
+
+.fileInputContainer {
+  margin: 0 auto;
+  width: min(20rem, 80%);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fileInputContainer .fileInput[type="file"] {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border: 2px solid var(--color-darkgrey);
+  padding: 1rem 2rem;
+  color: transparent;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.fileInput[type="file"]::file-selector-button {
+  visibility: hidden;
+}
+
+.fileInput[type="file"]::after {
+  content: "Click here to upload a picture";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--font-color-lighter-3);
+  padding: 1rem 0;
+  white-space: normal;
+}
+
+/* "Click here to upload a picture will be hidden when a fileInput is with value. */
+/* Currently Firefox and IE don't support :has selector */
+.fileInputContainer:has(.fileInputPreview:not([src=""]))
+  .fileInput[type="file"]::after {
+  color: transparent;
+}
+
+.btn {
+  align-self: center;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  border: none;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  border-radius: 0.8rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+  cursor: pointer;
+  color: var(--color-white);
+  background-color: var(--color-blue);
+}
+
+.btn:hover {
+  box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.4rem);
+}
+
+.btn:active {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  transform: translateY(0rem);
+}
+
+.formFeedback {
+  text-align: center;
+}
+
+@media only screen and (min-width: 36em) {
+  .form {
+    border: 2px solid currentColor;
+  }
+}

@@ -1,0 +1,14 @@
+.header {
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.heading {
+  text-transform: uppercase;
+  color: var(--font-color-lighter-2);
+  background-color: #fff;
+  padding: 0 2rem;
+  white-space: nowrap;
+}

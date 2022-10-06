@@ -66,5 +66,7 @@ export default async function handler(
     }
   }
 
-  return res.status(400).json({ error: "Only GET/PATCH method is allowed!" });
+  return res
+    .status(400)
+    .json({ error: "Only GET and PATCH method are allowed!" });
 }
