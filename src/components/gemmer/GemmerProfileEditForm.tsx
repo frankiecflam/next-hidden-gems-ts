@@ -46,6 +46,7 @@ const GemmerProfileEditForm = ({
     file: profileImageInputFile,
     fileDataUrl: profileImageInputPreviewUrl,
     onFileChange: profileImageInputOnChange,
+    onFileReset: profileImageInputOnReset,
   } = useFileReader();
 
   const { mutate: mutateGemmer } = useUpdateGemmer();
@@ -88,6 +89,7 @@ const GemmerProfileEditForm = ({
     usernameInputOnReset();
     bioInputOnReset();
     onCloseEdit();
+    profileImageInputOnReset();
   };
 
   return (
