@@ -10,3 +10,4 @@ export { AiOutlineClose as CloseIcon } from "react-icons/ai";
 export { AiOutlineCheckCircle as CorrectIcon } from "react-icons/ai";
 export { AiOutlineCloseCircle as IncorrectIcon } from "react-icons/ai";
 export { AiFillHeart as CollectionFilledIcon } from "react-icons/ai";
+export { FcGoogle as GoogleIcon } from "react-icons/fc";
