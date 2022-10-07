@@ -4,6 +4,7 @@ import Gem from "./gem";
 export default interface Gemmer {
   id: string;
   username: string;
+  email: string;
   bio: string;
   image: string;
   joinningDate: Timestamp;
