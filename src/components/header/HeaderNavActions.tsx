@@ -1,25 +1,10 @@
 import styles from "./HeaderNavActions.module.css";
 import { useRouter } from "next/router";
-import {
-  signInWithGooglePopup,
-  signOutWithGoogle,
-} from "../../config/firebase";
+import { signOutWithGoogle } from "../../config/firebase";
+import Link from "next/link";
 
 const HeaderNavActions = ({ loggedIn }: { loggedIn: boolean }) => {
   const router = useRouter();
-
-  const handleLogin = async () => {
-    try {
-      const response = await signInWithGooglePopup();
-
-      if (!response.user)
-        throw new Error("Failed to sign in with Google account!");
-
-      router.push("/");
-    } catch (error: any) {
-      console.log(error.message);
-    }
-  };
 
   const handleLogout = async () => {
     try {
@@ -42,18 +27,16 @@ const HeaderNavActions = ({ loggedIn }: { loggedIn: boolean }) => {
         </button>
       ) : (
         <>
-          <button
-            className={`${styles.navActionsBtn} ${styles.login}`}
-            onClick={handleLogin}
-          >
-            log in
-          </button>
-          <button
-            className={`${styles.navActionsBtn} ${styles.signup}`}
-            onClick={handleLogin}
-          >
-            sign up
-          </button>
+          <Link href="/account/signin">
+            <a className={`${styles.navActionsBtn} ${styles.signin}`}>
+              sign in
+            </a>
+          </Link>
+          <Link href="/account/signup">
+            <a className={`${styles.navActionsBtn} ${styles.signup}`}>
+              sign up
+            </a>
+          </Link>
         </>
       )}
     </div>
