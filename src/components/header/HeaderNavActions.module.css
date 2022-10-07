@@ -26,7 +26,7 @@
   transform: translateY(0rem);
 }
 
-.navActionsBtn.login {
+.navActionsBtn.signin {
   background-color: var(--color-blue);
   color: var(--color-white);
 }
