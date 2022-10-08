@@ -109,14 +109,18 @@ const GemmerInfo = ({
   return (
     <div className={styles.gemmerInfo}>
       <div className={styles.gemmerImageContainer}>
-        <Image
-          src={gemmer.image}
-          alt=""
-          layout="fixed"
-          width={128}
-          height={128}
-          className={styles.gemmerImage}
-        />
+        {gemmer.image ? (
+          <Image
+            src={gemmer.image}
+            alt=""
+            layout="fixed"
+            width={128}
+            height={128}
+            className={styles.gemmerImage}
+          />
+        ) : (
+          <div className={styles.noGemmerImage} />
+        )}
       </div>
       <div className={styles.gemmerDetails}>
         <div className={styles.gemmerInfoFlex}>
