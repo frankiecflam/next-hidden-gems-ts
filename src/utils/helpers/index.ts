@@ -8,3 +8,4 @@ export { default as sortGemsByDate } from "./sortGemsByDate";
 export { default as sortGemsByCategory } from "./sortGemsByCategory";
 export { default as validateUsernameInput } from "./validateUsernameInput";
 export { default as uploadImageFileToFirebaseStorage } from "./UploadImageFileToFirebaseStorage";
+export { default as checkIsUserCredentialType } from "./checkIsUserCredentialType";

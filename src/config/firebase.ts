@@ -1,12 +1,19 @@
 // Import the functions you need from the SDKs you need
+import Gemmer from "../types/gemmer";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  getAdditionalUserInfo,
 } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import {
+  getFirestore,
+  Timestamp,
+  addDoc,
+  collection,
+} from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
@@ -26,7 +33,34 @@ export const auth = getAuth(app);
 export const authProvider = new GoogleAuthProvider();
 
 // Firebase auth methods
-export const signInWithGooglePopup = () => signInWithPopup(auth, authProvider);
+export const signInWithGooglePopup = () =>
+  signInWithPopup(auth, authProvider)
+    .then(async (result) => {
+      const { user } = result;
+      const isNewUser = getAdditionalUserInfo(result)?.isNewUser;
+
+      if (isNewUser === true) {
+        const newGemmer: Gemmer = {
+          id: user.uid,
+          username: user.displayName || user.email || "user",
+          email: user.email!,
+          bio: "",
+          image: "",
+          joinningDate: Timestamp.now(),
+          collection: [],
+          gems: [],
+          following: [],
+          followers: [],
+        };
+
+        const gemmersRef = collection(db, "gemmers");
+        await addDoc(gemmersRef, newGemmer);
+      }
+
+      return result;
+    })
+    .catch((error) => console.log(error));
+
 export const signOutWithGoogle = () => signOut(auth);
 
 // Firestore
