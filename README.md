@@ -42,7 +42,7 @@ const GemModal = ({ onCloseModal, gem, gemmer }: GemModalProps) => {
 export default GemModal;
 ```
 
-### React Query
+### Data caching and mutating with React Query
 
 With React Query, API query results are cached during page switching across the entire app with the ability to invalidate query results and re-fetch data when server-side data is mutated.
 
