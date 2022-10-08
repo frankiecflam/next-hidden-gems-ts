@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./GemModalDetails.module.css";
 import { formatDate } from "../../utils/helpers";
+import { DefaultUserImage } from "../ui";
 
 interface GemModalDetailsProps {
   gem: Gem;
@@ -22,14 +23,18 @@ const GemModalDetails = ({
       <header className={styles.header}>
         <Link href={`/gemmer/${gemmerId}`}>
           <a>
-            <Image
-              src={gemmerImage}
-              alt=""
-              layout="fixed"
-              width={50}
-              height={50}
-              className={styles.gemmerImage}
-            />
+            {gemmerImage ? (
+              <Image
+                src={gemmerImage}
+                alt=""
+                layout="fixed"
+                width={50}
+                height={50}
+                className={styles.gemmerImage}
+              />
+            ) : (
+              <DefaultUserImage className={styles.noGemmerImage} />
+            )}
           </a>
         </Link>
         <Link href={`/gemmer/${gemmerId}`}>
