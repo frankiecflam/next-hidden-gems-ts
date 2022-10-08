@@ -1,23 +1,11 @@
 import styles from "./Hero.module.css";
 import Image from "next/image";
 import { HeroImage } from "../../assets/images";
-import { signInWithGooglePopup } from "../../config/firebase";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Hero = () => {
   const router = useRouter();
-
-  const handleLogin = async () => {
-    try {
-      const response = await signInWithGooglePopup();
-
-      if (!response.user) throw new Error("Failed to sign in!");
-
-      router.push("/");
-    } catch (error: any) {
-      console.log(error.message);
-    }
-  };
 
   return (
     <section className={styles.hero}>
@@ -30,9 +18,9 @@ const Hero = () => {
           <span>To inspire</span>
           <span>Be inspired</span>
         </p>
-        <button className={styles.discoverBtn} onClick={handleLogin}>
-          discover
-        </button>
+        <Link href="/account/signin">
+          <a className={styles.discoverLink}>discover</a>
+        </Link>
       </div>
       <div className={styles.imageContent}>
         <Image

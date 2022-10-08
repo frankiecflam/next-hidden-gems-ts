@@ -42,7 +42,7 @@
   object-fit: fill;
 }
 
-.discoverBtn {
+.discoverLink {
   background-color: var(--color-green);
   color: var(--color-white);
   padding: 1rem 2rem;
@@ -56,12 +56,12 @@
   cursor: pointer;
 }
 
-.discoverBtn:hover {
+.discoverLink:hover {
   box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.2);
   transform: translateY(-0.4rem);
 }
 
-.discoverBtn:active {
+.discoverLink:active {
   box-shadow: 0 1rem 2rem 0 rgba(0, 0, 0, 0.1);
   transform: translateY(0rem);
 }
@@ -99,7 +99,7 @@
     justify-content: flex-start;
   }
 
-  .discoverBtn {
+  .discoverLink {
     align-self: flex-start;
   }
 }
