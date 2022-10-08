@@ -1,34 +1,91 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJS App - Hidden Gems (Rebuilt with TypeScript and React Query)
+The entire app was rebuilt with TypeScript and React Query for better user experience during page switching.
 
-## Getting Started
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
+- [Enhancement](#enhancement)
+  - [Type Safety with TypeScript](#type-safety-with-typescript)
+  - [Data caching and mutating with React Query](#data-caching-and-mutating-with-react-query)
+- [Links](#Links)
+- [Author](#author)
+
+## Enhancement
+
+### Type Safety with TypeScript
+Typescript helped eliminating type errors which I experienced a lot with when first building this app with JavaScript, thereby fewer bugs and better developer experience (DX).
+
+
+```ts
+interface GemModalProps {
+  onCloseModal: () => void;
+  gem: Gem;
+  gemmer: Gemmer;
+}
+
+const GemModal = ({ onCloseModal, gem, gemmer }: GemModalProps) => {
+  return (
+    <div className={styles.modal} onClick={onCloseModal}>
+      <div className={styles.imageContent}>
+        <Image src={gem.image} alt="" layout="fill" objectFit="cover" />
+      </div>
+      <GemModalDetails
+        gem={gem}
+        gemmerId={gemmer.id}
+        gemmerImage={gemmer.image}
+        gemmerUsername={gemmer.username}
+      />
+    </div>
+  );
+};
+
+export default GemModal;
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### React Query
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+With React Query, API query results are cached during page switching across the entire app with the ability to invalidate query results and re-fetch data when server-side data is mutated.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```ts
+export default function useGems() {
+  return useQuery(
+    ["gems"],
+    () => axios.get("/api/gems").then((res) => res.data.gems as Gem[]),
+    {
+      select: (gems: Gem[]) => {
+        return sortGemsByDate(gems);
+      },
+    }
+  );
+};
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+export default function useCreateGem() {
+  const queryClient = useQueryClient();
 
-## Learn More
+  return useMutation(
+    (newGem: Gem) =>
+      axios
+        .post("/api/gems", {
+          newGem,
+        })
+        .then((res) => res.data.gems),
+    {
+      onSuccess: (gems: Gem[]) => {
+        queryClient.invalidateQueries(["gems"]);
+      },
+    }
+  );
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Links
+- Live Site URL: [Hidden Gems (Rebuilt with TypeScript and React Query)](https://hiddengems-ts.vercel.app/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Live Site URL: [Hidden Gems (JS)](https://hiddengems.vercel.app/)
+- GitHub: [Hidden Gems(JS)](https://github.com/frankiecflam/next-hidden-gems)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Author
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Email - [Frankie Lam] cfl.frankie@gmail.com
+- Instagram - [@frankie\_\_\_lam](https://www.instagram.com/frankie___lam/)
+- Facebook - [Frankie Lam](https://www.facebook.com/frankiecflam/)
