@@ -3,6 +3,7 @@ import styles from "./GemmerRelationshipModal.module.css";
 import { useGemmers } from "../../hooks";
 import Image from "next/image";
 import Link from "next/link";
+import { DefaultUserImage } from "../ui";
 
 interface GemmerRelationshipModalProps {
   onCloseModal: () => void;
@@ -56,14 +57,18 @@ const GemmerRelationshipModal = ({
               <div onClick={onCloseModal}>
                 <Link href={`/gemmer/${gemmer.id}`}>
                   <a>
-                    <Image
-                      src={gemmer.image}
-                      alt=""
-                      layout="fixed"
-                      width={50}
-                      height={50}
-                      className={styles.gemmerImage}
-                    />
+                    {gemmer.image ? (
+                      <Image
+                        src={gemmer.image}
+                        alt=""
+                        layout="fixed"
+                        width={50}
+                        height={50}
+                        className={styles.gemmerImage}
+                      />
+                    ) : (
+                      <DefaultUserImage className={styles.noGemmerImage} />
+                    )}
                   </a>
                 </Link>
               </div>

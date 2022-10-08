@@ -6,6 +6,7 @@ import { GemmerRelationship, GemmerRelationshipUpdateBtn } from "./";
 import { useUpdateGemmer } from "../../hooks";
 import { query, where, collection, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
+import { DefaultUserImage } from "../ui";
 
 interface GemmerInfoProps {
   gemmer: Gemmer;
@@ -119,7 +120,7 @@ const GemmerInfo = ({
             className={styles.gemmerImage}
           />
         ) : (
-          <div className={styles.noGemmerImage} />
+          <DefaultUserImage className={styles.noGemmerImage} />
         )}
       </div>
       <div className={styles.gemmerDetails}>

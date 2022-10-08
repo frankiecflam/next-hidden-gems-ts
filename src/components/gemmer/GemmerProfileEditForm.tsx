@@ -10,6 +10,7 @@ import { FormEvent } from "react";
 import { useUpdateGemmer } from "../../hooks";
 import { query, where, collection, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
+import { DefaultUserImage } from "../ui";
 
 interface GemmerProfileEditFormProps {
   onCloseEdit: () => void;
@@ -95,14 +96,19 @@ const GemmerProfileEditForm = ({
   return (
     <form className={styles.form} onSubmit={handleFormSubmit}>
       <div className={styles.imageContent}>
-        <Image
-          src={profileImageInputPreviewUrl || gemmer.image}
-          alt=""
-          layout="fixed"
-          width={128}
-          height={128}
-          className={styles.gemmerImage}
-        />
+        {!profileImageInputPreviewUrl && !gemmer.image ? (
+          <DefaultUserImage />
+        ) : (
+          <Image
+            src={profileImageInputPreviewUrl || gemmer.image}
+            alt=""
+            layout="fixed"
+            width={128}
+            height={128}
+            className={styles.gemmerImage}
+          />
+        )}
+
         <input
           type="file"
           className={styles.fileInput}
