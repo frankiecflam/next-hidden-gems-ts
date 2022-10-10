@@ -9,6 +9,7 @@ import { checkCollectionForGem } from "../../utils/helpers";
 import { query, where, collection, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { useUpdateGemmer } from "../../hooks";
+import { BlurImage } from "../../assets/images";
 
 interface MasonryItemProps {
   gem: GemType;
@@ -60,6 +61,8 @@ const MasonryItem = ({ gem, gemmer, currentUser }: MasonryItemProps) => {
           height={480}
           onClick={() => setShowGemModal(true)}
           className={styles.gemImage}
+          blurDataURL={BlurImage.src}
+          placeholder="blur"
         />
         <CollectionFilledIcon
           onClick={handleUpdateCollection}
