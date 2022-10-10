@@ -57,8 +57,6 @@ export const signInWithGooglePopup = () =>
         await addDoc(gemmersRef, newGemmer);
       }
 
-      console.log("Returning result!");
-
       return result;
     })
     .catch((error) => {
