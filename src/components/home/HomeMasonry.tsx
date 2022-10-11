@@ -7,6 +7,7 @@ import {
   filterGemsBySearchTerm,
 } from "../../utils/helpers";
 import Category from "../../types/category";
+import { LoadingSpinner } from "../ui";
 
 const HomeMasonry = ({ loggedInUserId }: { loggedInUserId: string }) => {
   const [categoryFilter, setCategoryFilter] = useState<Category>({
@@ -31,7 +32,8 @@ const HomeMasonry = ({ loggedInUserId }: { loggedInUserId: string }) => {
     data: currentUser,
   } = useGemmer(loggedInUserId);
 
-  if (gemsIsLoading || gemmersIsLoading || currentUserIsLoading) return null;
+  if (gemsIsLoading || gemmersIsLoading || currentUserIsLoading)
+    return <LoadingSpinner />;
 
   if (gemsLoadingError || gemmersLoadingError || !gems || !gemmers)
     return <div>Something went wrong fetching gems from the database!</div>;
