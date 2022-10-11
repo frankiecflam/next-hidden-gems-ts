@@ -1,5 +1,9 @@
 # NextJS App - Hidden Gems (Rebuilt with TypeScript and React Query)
-The entire app was rebuilt with TypeScript and React Query for better user experience during page switching.
+The entire app was rebuilt with TypeScript and React Query for better user experience during page switching. 
+
+It was initially built with JavaScript in Jun 2022. Here are the website and github for the initial version of the app.
+- Live Site URL: [Hidden Gems (JS)](https://hiddengems.vercel.app/)
+- GitHub: [Hidden Gems(JS)](https://github.com/frankiecflam/next-hidden-gems)
 
 
 ## Table of contents
@@ -80,9 +84,6 @@ export default function useCreateGem() {
 
 ## Links
 - Live Site URL: [Hidden Gems (Rebuilt with TypeScript and React Query)](https://hiddengems-ts.vercel.app/)
-
-- Live Site URL: [Hidden Gems (JS)](https://hiddengems.vercel.app/)
-- GitHub: [Hidden Gems(JS)](https://github.com/frankiecflam/next-hidden-gems)
 
 ## Author
 
