@@ -1,12 +1,9 @@
 import styles from "./Hero.module.css";
 import Image from "next/image";
 import { HeroImage } from "../../assets/images";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 const Hero = () => {
-  const router = useRouter();
-
   return (
     <section className={styles.hero}>
       <div className={styles.textContent}>
