@@ -9,7 +9,7 @@ import {
   useCreateGem,
   useUpdateGemmer,
 } from "../../hooks";
-import { uploadImageFileToFirebaseStorage } from "../../utils/helpers";
+import { uploadImageFileToFirebaseCloudStorage } from "../../utils/helpers";
 import Gem from "../../types/gem";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../../config/firebase";
@@ -95,10 +95,11 @@ const NewGemForm = ({ loggedInUserId }: { loggedInUserId: string }) => {
       return;
     }
 
-    const fileImageFirebaseStorageUrl = await uploadImageFileToFirebaseStorage({
-      path: "gems",
-      file: gemImageFile,
-    });
+    const fileImageFirebaseStorageUrl =
+      await uploadImageFileToFirebaseCloudStorage({
+        path: "gems",
+        file: gemImageFile,
+      });
 
     const newGemId = uuidv4();
 

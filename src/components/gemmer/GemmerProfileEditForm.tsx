@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useInput, useFileReader } from "../../hooks";
 import {
   validateUsernameInput,
-  uploadImageFileToFirebaseStorage,
+  uploadImageFileToFirebaseCloudStorage,
 } from "../../utils/helpers";
 import { FormEvent } from "react";
 import { useUpdateGemmer } from "../../hooks";
@@ -65,7 +65,7 @@ const GemmerProfileEditForm = ({
     };
 
     if (profileImageInputFile) {
-      const newProfileImageUrl = await uploadImageFileToFirebaseStorage({
+      const newProfileImageUrl = await uploadImageFileToFirebaseCloudStorage({
         file: profileImageInputFile,
         path: "gemmers",
       });
