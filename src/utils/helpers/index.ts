@@ -9,3 +9,4 @@ export { default as sortGemsByCategory } from "./sortGemsByCategory";
 export { default as validateUsernameInput } from "./validateUsernameInput";
 export { default as uploadImageFileToFirebaseStorage } from "./UploadImageFileToFirebaseStorage";
 export { default as checkIsUserCredentialType } from "./checkIsUserCredentialType";
+export { default as getDocumentIdByPrimaryKey } from "./getDocumentIdByPrimaryKey";
