@@ -1,7 +1,7 @@
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from "../../config/firebase";
 
-interface UploadImageFileToFirebaseStorage {
+interface UploadImageFileToFirebaseStorageArgs {
   path: "gems" | "gemmers";
   file: File;
 }
@@ -9,7 +9,7 @@ interface UploadImageFileToFirebaseStorage {
 export default async function uploadImageFileToFirebaseStorage({
   path,
   file,
-}: UploadImageFileToFirebaseStorage) {
+}: UploadImageFileToFirebaseStorageArgs) {
   const fileRef = ref(storage, `/images/${path}/${file.name}`);
 
   await uploadBytes(fileRef, file);
