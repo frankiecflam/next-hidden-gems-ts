@@ -8,9 +8,8 @@ import {
 } from "../../utils/helpers";
 import { FormEvent } from "react";
 import { useUpdateGemmer } from "../../hooks";
-import { query, where, collection, getDocs } from "firebase/firestore";
-import { db } from "../../config/firebase";
 import { DefaultUserImage } from "../ui";
+import { getDocumentIdByPrimaryKey } from "../../utils/helpers";
 
 interface GemmerProfileEditFormProps {
   onCloseEdit: () => void;
@@ -74,16 +73,12 @@ const GemmerProfileEditForm = ({
       updatedGemmerData.image = newProfileImageUrl;
     }
 
-    const q = query(collection(db, "gemmers"), where("id", "==", gemmer.id));
+    const docId = await getDocumentIdByPrimaryKey("gemmers", gemmer.id);
 
-    const querySnapshot = await getDocs(q);
-
-    if (querySnapshot.empty) {
-      console.log("Failed to update the gemmer's details!");
+    if (!docId) {
+      console.log("No matching document with the gemmer's Id provided!");
       return;
     }
-
-    const docId = querySnapshot.docs[0].id;
 
     mutateGemmer({ mutatedGemmer: updatedGemmerData, docId });
 

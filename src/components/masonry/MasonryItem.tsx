@@ -6,10 +6,9 @@ import { useState } from "react";
 import { Gem } from "../gem";
 import { CollectionFilledIcon } from "../../assets/icons";
 import { checkCollectionForGem } from "../../utils/helpers";
-import { query, where, collection, getDocs } from "firebase/firestore";
-import { db } from "../../config/firebase";
 import { useUpdateGemmer } from "../../hooks";
 import { BlurImage } from "../../assets/images";
+import { getDocumentIdByPrimaryKey } from "../../utils/helpers";
 
 interface MasonryItemProps {
   gem: GemType;
@@ -27,19 +26,13 @@ const MasonryItem = ({ gem, gemmer, currentUser }: MasonryItemProps) => {
   const { mutate: mutateCurrentUser } = useUpdateGemmer();
 
   const handleUpdateCollection = async () => {
-    const q = query(
-      collection(db, "gemmers"),
-      where("id", "==", currentUser.id)
-    );
+    const docId = await getDocumentIdByPrimaryKey("gemmers", currentUser.id);
 
-    const querySnapshot = await getDocs(q);
-
-    if (querySnapshot.empty) {
-      console.log("Failed to update collection!");
+    if (!docId) {
+      console.log("No matching document with the current user's id provided!");
       return;
     }
 
-    const docId = querySnapshot.docs[0].id;
     const updatedUserInfo: GemmerType = {
       ...currentUser,
       collection: isGemInCollection
