@@ -7,6 +7,6 @@ export { default as getGemsWithIds } from "./getGemsWithIds";
 export { default as sortGemsByDate } from "./sortGemsByDate";
 export { default as sortGemsByCategory } from "./sortGemsByCategory";
 export { default as validateUsernameInput } from "./validateUsernameInput";
-export { default as uploadImageFileToFirebaseStorage } from "./uploadImageFileToFirebaseStorage";
 export { default as checkIsUserCredentialType } from "./checkIsUserCredentialType";
 export { default as getDocumentIdByPrimaryKey } from "./getDocumentIdByPrimaryKey";
+export { default as uploadImageFileToFirebaseStorage } from "./uploadImageFileToFirebaseStorage";
