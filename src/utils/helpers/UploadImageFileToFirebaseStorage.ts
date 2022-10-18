@@ -6,7 +6,7 @@ interface UploadImageFileToFirebaseStorageArgs {
   file: File;
 }
 
-async function uploadImageFileToFirebaseStorage({
+export default async function uploadImageFileToFirebaseStorage({
   path,
   file,
 }: UploadImageFileToFirebaseStorageArgs) {
@@ -17,5 +17,3 @@ async function uploadImageFileToFirebaseStorage({
 
   return url;
 }
-
-export default uploadImageFileToFirebaseStorage;
