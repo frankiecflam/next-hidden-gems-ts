@@ -6,7 +6,7 @@
   - [Project background](#project-background)
   - [Project structure](#project-structure)
   - [Project tech stack](#project-tech-stack)
-  - [Project screenshot](#project-screenshot)
+  - [Project screenshots](#project-screenshots)
   - [Project links](#project-links)
 - [Enhancement](#enhancement)
   - [Type safety with TypeScript](#type-safety-with-typescript)
@@ -19,10 +19,7 @@
 
 The is a rebuilt version of my first NextJS app, a multiple-page application serving as a social-media platform where users can share their hidden gems using images, follow each other and save any hidden gems they like in a collection for later retrieval.
 
-It was rebuilt with TypeScript and React Query for better user experience during page switching. Initially, the project was built with React in JavaScript in Jun 2022. Here are the website and GitHub for the initial version of the app.
-
-- Live Site URL: [Hidden Gems (JS)](https://hiddengems.vercel.app/)
-- GitHub: [Hidden Gems(JS)](https://github.com/frankiecflam/next-hidden-gems)
+It was rebuilt with TypeScript and React Query for better user experience during page switching. Initially, the project was built with React in JavaScript in Jun 2022.
 
 ### Project structure
 
@@ -68,7 +65,7 @@ It is the sign-up page of the app. Basically it works the same as account/signin
 
 TypeScript, NextJS, React, React Query, CSS and Firebase.
 
-### Project screenshot
+### Project screenshots
 
 #### Desktop
 
@@ -85,6 +82,10 @@ TypeScript, NextJS, React, React Query, CSS and Firebase.
 ### Project links
 
 - Live Site URL: [Hidden Gems](https://hiddengems-ts.vercel.app/)
+
+Here are the website and GitHub for the initial version of the app.
+- Live Site URL: [Hidden Gems (JS)](https://hiddengems.vercel.app/)
+- GitHub: [Hidden Gems(JS)](https://github.com/frankiecflam/next-hidden-gems)
 
 ## Enhancement
 
