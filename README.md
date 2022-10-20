@@ -6,8 +6,8 @@
   - [Project background](#project-background)
   - [Project structure](#project-structure)
   - [Project tech stack](#project-tech-stack)
-  - [project screenshot](#project-screenshot)
-  - [project links](#project-links)
+  - [Project screenshot](#project-screenshot)
+  - [Project links](#project-links)
 - [Enhancement](#enhancement)
   - [Type safety with TypeScript](#type-safety-with-typescript)
   - [Data caching and mutating with React Query](#data-caching-and-mutating-with-react-query)
@@ -72,19 +72,19 @@ TypeScript, NextJS, React, React Query, CSS and Firebase.
 
 #### Desktop
 
-![Home-Hero](./project-screenshot/Screenshot Home-Hero-Desktop.png)
-![Home-Masonry](./project-screenshot/Screenshot Home-Masonry-Desktop.png)
-![Gemmer](./project-screenshot/Screenshot Gemmer-Desktop.png)
+![Home-Hero](./project-screenshot/Screenshot-Home-Hero-Desktop.png)
+![Home-Masonry](./project-screenshot/Screenshot-Home-Masonry-Desktop.png)
+![Gemmer](./project-screenshot/Screenshot-Gemmer-Desktop.png)
 
 #### Mobile
 
-![Home-GemModal](./project-screenshot/Screenshot Home-GemModal-Mobile.png)
-![Collection](./project-screenshot/Screenshot Collection-Mobile.png)
-![NewGem](./project-screenshot/Screenshot NewGem-Mobile.png)
+![Home-GemModal](./project-screenshot/Screenshot-Home-GemModal-Mobile.png)
+![Collection](./project-screenshot/Screenshot-Collection-Mobile.png)
+![NewGem](./project-screenshot/Screenshot-NewGem-Mobile.png)
 
 ### Project links
 
-- Live Site URL: [Hidden Gems (Rebuilt with TypeScript and React Query)](https://hiddengems-ts.vercel.app/)
+- Live Site URL: [Hidden Gems](https://hiddengems-ts.vercel.app/)
 
 ## Enhancement
 
