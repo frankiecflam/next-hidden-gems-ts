@@ -7,6 +7,7 @@ import {
   signInWithPopup,
   signOut,
   getAdditionalUserInfo,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -65,6 +66,21 @@ export const signInWithGooglePopup = () =>
     });
 
 export const signOutWithGoogle = () => signOut(auth);
+
+// Sign in with email and password
+export const signInWithEmailNPassword = (email: string, password: string) =>
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      console.log(errorMessage);
+    });
 
 // Firestore
 export const db = getFirestore(app);
