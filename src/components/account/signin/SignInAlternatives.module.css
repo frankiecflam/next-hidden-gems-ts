@@ -1,0 +1,19 @@
+.signupAlternative {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+  text-align: center;
+}
+
+.signUpLink {
+  text-transform: capitalize;
+  color: var(--font-color-lighter-3);
+  border-bottom: 2px solid currentColor;
+  transition: all 0.4s;
+  letter-spacing: 1px;
+}
+
+.signUpLink:hover {
+  color: var(--font-color-lighter-1);
+}

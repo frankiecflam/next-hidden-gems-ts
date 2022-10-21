@@ -1,6 +1,5 @@
 import styles from "./SignInForm.module.css";
-import Link from "next/link";
-import { SignInWithGooglePopUp } from "./";
+import { SignInWithGooglePopUp, SignInAlternatives } from "./";
 
 const SignInForm = () => {
   return (
@@ -10,19 +9,7 @@ const SignInForm = () => {
       </header>
       <div className={styles.body}>
         <SignInWithGooglePopUp />
-
-        <div className={styles.alternatives}>
-          <div className={styles.signupAlternative}>
-            <p>
-              Or
-              <br />
-              If you do not have an account,
-            </p>
-            <Link href="/account/signup">
-              <a className={styles.signUpLink}>sign up</a>
-            </Link>
-          </div>
-        </div>
+        <SignInAlternatives />
       </div>
     </section>
   );
