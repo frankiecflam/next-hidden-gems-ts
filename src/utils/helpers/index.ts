@@ -10,3 +10,4 @@ export { default as validateUsernameInput } from "./validateUsernameInput";
 export { default as checkIsUserCredentialType } from "./checkIsUserCredentialType";
 export { default as getDocumentIdByPrimaryKey } from "./getDocumentIdByPrimaryKey";
 export { default as uploadImageFileToFirebaseCloudStorage } from "./uploadImageFileToFirebaseCloudStorage";
+export { default as checkIfEmailHasBeenRegistered } from "./checkIfEmailHasBeenRegistered";

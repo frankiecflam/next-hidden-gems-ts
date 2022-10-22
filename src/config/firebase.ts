@@ -7,6 +7,8 @@ import {
   signInWithPopup,
   signOut,
   getAdditionalUserInfo,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -65,6 +67,49 @@ export const signInWithGooglePopup = () =>
     });
 
 export const signOutWithGoogle = () => signOut(auth);
+
+// Sign in with email and password
+export const signInWithEmailNPassword = (email: string, password: string) =>
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      return user;
+    })
+    .catch((error) => {
+      console.log(error);
+      return error;
+    });
+
+// Sign up with email and password
+export const signUpWithEmailNPassword = (
+  email: string,
+  password: string,
+  username: string
+) =>
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(async (userCredential) => {
+      const user = userCredential.user;
+
+      const newGemmer: Gemmer = {
+        id: user.uid,
+        username: username,
+        email: email,
+        bio: "",
+        image: "",
+        joinningDate: Timestamp.now(),
+        collection: [],
+        gems: [],
+        following: [],
+        followers: [],
+      };
+
+      const gemmersRef = collection(db, "gemmers");
+      await addDoc(gemmersRef, newGemmer);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
 // Firestore
 export const db = getFirestore(app);

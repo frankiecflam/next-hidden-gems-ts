@@ -22,7 +22,7 @@ const SignUpPage: NextPage = () => {
           content="Join now to discover hidden gems from people across the world!"
         />
       </Head>
-      <>{!user && <SignUpForm />}</>
+      <div>{!user && <SignUpForm />}</div>
     </>
   );
 };
