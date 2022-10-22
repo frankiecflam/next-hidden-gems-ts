@@ -1,5 +1,9 @@
 import styles from "./SignInForm.module.css";
-import { SignInWithGooglePopUp, SignInAlternatives } from "./";
+import {
+  SignInWithGooglePopUp,
+  SignInAlternatives,
+  SignInWithEmailAndPassword,
+} from "./";
 
 const SignInForm = () => {
   return (
@@ -9,6 +13,7 @@ const SignInForm = () => {
       </header>
       <div className={styles.body}>
         <SignInWithGooglePopUp />
+        <SignInWithEmailAndPassword />
         <SignInAlternatives />
       </div>
     </section>
