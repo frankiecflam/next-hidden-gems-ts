@@ -94,7 +94,7 @@ export const signUpWithEmailNPassword = (
       const newGemmer: Gemmer = {
         id: user.uid,
         username: username,
-        email: email,
+        email: email.toLowerCase(),
         bio: "",
         image: "",
         joinningDate: Timestamp.now(),
