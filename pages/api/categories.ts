@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import { collection, getDocs, DocumentData } from "firebase/firestore";
 import { db } from "../../src/config/firebase";
@@ -29,8 +28,8 @@ export default async function handler(
       docs.push(doc.data());
     });
 
-    res.status(200).json({ categories: docs });
+    return res.status(200).json({ categories: docs });
   } catch (error: any) {
-    res.status(500).json({ error });
+    return res.status(400).json({ error });
   }
 }
