@@ -61,7 +61,16 @@ export default async function handler(
 
       return res.status(200).json({ gemmers: docs });
     } catch (error: any) {
-      return res.status(400).json({ error });
+      if (error instanceof Error) {
+        return res.status(400).json({ error: error.message });
+      }
+
+      return res
+        .status(500)
+        .json({
+          error:
+            "Failed to fetch documents of the gemmers collection from the database!",
+        });
     }
   }
 

@@ -30,6 +30,14 @@ export default async function handler(
 
     return res.status(200).json({ categories: docs });
   } catch (error: any) {
-    return res.status(400).json({ error });
+    if (error instanceof Error) {
+      console.log(error);
+      return res.status(400).json({ error: error.message });
+    }
+
+    return res.status(500).json({
+      error:
+        "Failed to fetch documents of the categories collection from the database!",
+    });
   }
 }
