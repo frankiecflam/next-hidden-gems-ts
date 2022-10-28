@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import {
   collection,
@@ -36,7 +35,7 @@ export default async function handler(
 
       return res.status(200).json({ gemmers: docs });
     } catch (error: any) {
-      return res.status(500).json({ error });
+      return res.status(400).json({ error });
     }
   }
 
@@ -62,7 +61,16 @@ export default async function handler(
 
       return res.status(200).json({ gemmers: docs });
     } catch (error: any) {
-      return res.status(500).json({ error });
+      if (error instanceof Error) {
+        return res.status(400).json({ error: error.message });
+      }
+
+      return res
+        .status(500)
+        .json({
+          error:
+            "Failed to fetch documents of the gemmers collection from the database!",
+        });
     }
   }
 

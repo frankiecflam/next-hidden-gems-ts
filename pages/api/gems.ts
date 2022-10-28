@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import { collection, getDocs, DocumentData, addDoc } from "firebase/firestore";
 import { db } from "../../src/config/firebase";
@@ -54,7 +53,14 @@ export default async function handler(
 
       return res.status(200).json({ gems: docs });
     } catch (error: any) {
-      return res.status(400).json({ error });
+      if (error instanceof Error) {
+        return res.status(400).json({ error: error.message });
+      }
+
+      return res.status(500).json({
+        error:
+          "Failed to fetch documents of the gems collection from the database!",
+      });
     }
   }
 
