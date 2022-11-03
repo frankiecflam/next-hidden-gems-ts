@@ -25,7 +25,7 @@ import {
 } from "firebase/firestore";
 
 const NewGemForm = ({ loggedInUserId }: { loggedInUserId: string }) => {
-  const [categoryInputValue, setCategoryInputValue] = useState("default");
+  const [categoryInputValue, setCategoryInputValue] = useState("");
   const [formFeedback, setFormFeedback] = useState("");
   const router = useRouter();
 
@@ -77,11 +77,14 @@ const NewGemForm = ({ loggedInUserId }: { loggedInUserId: string }) => {
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const formValidity: boolean = gemImageFile
-      ? true
-      : false && categoryInputValue
-      ? true
-      : false && titleInputValidity && descriptionInputValidity;
+    const gemImageFileInputValidity = gemImageFile ? true : false;
+    const categoryInputValidity = categoryInputValue ? true : false;
+
+    const formValidity: boolean =
+      gemImageFileInputValidity &&
+      categoryInputValidity &&
+      titleInputValidity &&
+      descriptionInputValidity;
 
     if (!formValidity) {
       setFormFeedback(
@@ -189,13 +192,13 @@ const NewGemForm = ({ loggedInUserId }: { loggedInUserId: string }) => {
         />
         <select
           required
-          value={categoryInputValue}
+          defaultValue={categoryInputValue}
           className={styles.categorySelect}
-          onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-            setCategoryInputValue(e.target.value)
-          }
+          onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+            return setCategoryInputValue(e.target.value);
+          }}
         >
-          <option value="default" disabled>
+          <option value="" disabled>
             Please select a category
           </option>
           {categories.map((category) => (
