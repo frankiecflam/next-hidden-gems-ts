@@ -21,6 +21,12 @@ export default function useCreateGem() {
       onSuccess: (gems: Gem[]) => {
         queryClient.invalidateQueries(["gems"]);
       },
+      onError: (error) => {
+        console.log(
+          "Error occured during zod parsing the api response of Gems."
+        );
+        console.error(error);
+      },
     }
   );
 }
