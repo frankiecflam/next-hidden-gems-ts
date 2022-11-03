@@ -10,8 +10,6 @@ const useGemmers = () => {
       axios.get("/api/gemmers").then((res) => {
         const data = res.data.gemmers;
 
-        console.log(data);
-
         return gemmersSchema.parse(data) as Gemmer[];
       }),
     {
