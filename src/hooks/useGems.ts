@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Gem from "../types/gem";
 import { sortGemsByDate } from "../utils/helpers";
-import gemsSchema from "../schema/gems.schema";
+import { gems as gemsSchema } from "../schema/gems.schema";
 
 const useGems = () => {
   return useQuery(
