@@ -7,6 +7,7 @@ import { useUpdateGemmer } from "../../hooks";
 import { query, where, collection, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import { DefaultUserImage } from "../ui";
+import { BlurImage } from "../../assets/images";
 
 interface GemmerInfoProps {
   gemmer: Gemmer;
@@ -118,6 +119,8 @@ const GemmerInfo = ({
             width={128}
             height={128}
             className={styles.gemmerImage}
+            placeholder="blur"
+            blurDataURL={BlurImage.src}
           />
         ) : (
           <DefaultUserImage className={styles.noGemmerImage} />
