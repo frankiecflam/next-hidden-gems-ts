@@ -7,7 +7,7 @@ export default interface Gemmer {
   email: string;
   bio: string;
   image: string;
-  joinningDate: Timestamp;
+  joiningDate: Timestamp;
   collection: string[];
   following: string[];
   followers: string[];

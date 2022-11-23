@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import Gemmer from "../types/gemmer";
+import { gemmers as gemmersSchema } from "../schema/gemmers.schema";
 
 const useUpdateGemmer = () => {
   const queryClient = useQueryClient();
@@ -10,7 +11,9 @@ const useUpdateGemmer = () => {
       axios
         .patch("/api/gemmers", { gemmer: mutatedGemmer, docId })
         .then((res) => {
-          const { gemmers }: { gemmers: Gemmer[] } = res.data;
+          const data = res.data.gemmers;
+
+          const gemmers = gemmersSchema.parse(data) as Gemmer[];
 
           const currentGemmer = gemmers.find(
             (gemmer) => gemmer.id === mutatedGemmer.id
@@ -25,7 +28,10 @@ const useUpdateGemmer = () => {
       onSuccess: (gemmer: Gemmer) =>
         queryClient.invalidateQueries(["gemmers", gemmer.id]),
 
-      onError: (error: any) => {
+      onError: (error) => {
+        console.log(
+          "Error occured during zod parsing the api response of Gemmers."
+        );
         console.error(error);
       },
     }
