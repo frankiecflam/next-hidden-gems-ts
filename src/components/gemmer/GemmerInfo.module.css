@@ -12,6 +12,10 @@
   justify-self: center;
 }
 
+.gemmerImageContainer > span {
+  border-radius: 100%;
+}
+
 .gemmerImage {
   border-radius: 100%;
 }

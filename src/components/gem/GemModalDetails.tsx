@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./GemModalDetails.module.css";
 import { formatDate } from "../../utils/helpers";
 import { DefaultUserImage } from "../ui";
+import { BlurImage } from "../../assets/images";
 
 interface GemModalDetailsProps {
   gem: Gem;
@@ -22,7 +23,7 @@ const GemModalDetails = ({
     <div>
       <header className={styles.header}>
         <Link href={`/gemmer/${gemmerId}`}>
-          <a>
+          <a className={styles.gemmerImageLink}>
             {gemmerImage ? (
               <Image
                 src={gemmerImage}
@@ -31,6 +32,8 @@ const GemModalDetails = ({
                 width={50}
                 height={50}
                 className={styles.gemmerImage}
+                placeholder="blur"
+                blurDataURL={BlurImage.src}
               />
             ) : (
               <DefaultUserImage className={styles.noGemmerImage} />

@@ -6,6 +6,10 @@
   border-bottom: 2px solid var(--color-lightgrey);
 }
 
+.gemmerImageLink > span {
+  border-radius: 100%;
+}
+
 .gemmerImage {
   border-radius: 100%;
 }

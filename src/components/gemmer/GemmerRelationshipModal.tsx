@@ -4,6 +4,7 @@ import { useGemmers } from "../../hooks";
 import Image from "next/image";
 import Link from "next/link";
 import { DefaultUserImage } from "../ui";
+import { BlurImage } from "../../assets/images";
 
 interface GemmerRelationshipModalProps {
   onCloseModal: () => void;
@@ -56,7 +57,7 @@ const GemmerRelationshipModal = ({
             <li key={gemmer.id} className={styles.gemmerItem}>
               <div onClick={onCloseModal}>
                 <Link href={`/gemmer/${gemmer.id}`}>
-                  <a>
+                  <a className={styles.gemmerImageLink}>
                     {gemmer.image ? (
                       <Image
                         src={gemmer.image}
@@ -65,6 +66,8 @@ const GemmerRelationshipModal = ({
                         width={50}
                         height={50}
                         className={styles.gemmerImage}
+                        placeholder="blur"
+                        blurDataURL={BlurImage.src}
                       />
                     ) : (
                       <DefaultUserImage className={styles.noGemmerImage} />
