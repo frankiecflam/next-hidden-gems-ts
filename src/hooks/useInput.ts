@@ -8,33 +8,31 @@ const initialInputState = {
 
 type StateType = typeof initialInputState;
 
-enum ACTIONS {
-  "change" = "CHANGE",
-  "blur" = "BLUR",
-  "reset" = "RESET",
+interface Actions {
+  change: { type: "Change"; value: string };
+  blur: { type: "Blur"; inputValidate: (inputValue: string) => boolean };
+  reset: { type: "Reset" };
 }
 
-type ActionType = {
-  type: ACTIONS;
-  value?: string;
-  inputValidate?: (inputValue: string) => boolean;
-};
+type ObjectValues<T> = T[keyof T];
+
+type ActionType = ObjectValues<Actions>;
 
 const inputReducer = (state: StateType, action: ActionType) => {
   switch (action.type) {
-    case ACTIONS.change:
+    case "Change":
       return {
         ...state,
-        inputValue: action.value!,
+        inputValue: action.value,
       };
 
-    case ACTIONS.blur:
+    case "Blur":
       return {
         ...state,
-        inputIsValid: action.inputValidate!(state.inputValue),
+        inputIsValid: action.inputValidate(state.inputValue),
       };
 
-    case ACTIONS.reset:
+    case "Reset":
       return initialInputState;
 
     default:
@@ -57,15 +55,15 @@ const useInput = ({ initialValue, inputValidate }: UseInput) => {
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    inputDispatch({ type: ACTIONS.change, value: e.target.value });
+    inputDispatch({ type: "Change", value: e.target.value });
   };
 
   const handleInputBlur = () => {
-    inputDispatch({ type: ACTIONS.blur, inputValidate });
+    inputDispatch({ type: "Blur", inputValidate });
   };
 
   const handleInputReset = () => {
-    inputDispatch({ type: ACTIONS.reset });
+    inputDispatch({ type: "Reset" });
   };
 
   return {
