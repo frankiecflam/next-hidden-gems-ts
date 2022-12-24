@@ -40,17 +40,16 @@ const inputReducer = (state: StateType, action: ActionType) => {
   }
 };
 
-interface UseInput {
-  initialValue: string;
+interface UseInputParms {
+  state?: typeof initialInputState;
   inputValidate: (inputValue: string) => boolean;
 }
 
-const useInput = ({ initialValue, inputValidate }: UseInput) => {
-  const [inputState, inputDispatch] = useReducer(inputReducer, {
-    ...initialInputState,
-    inputValue: initialValue,
-    inputIsValid: inputValidate(initialValue),
-  });
+const useInput = ({
+  state = initialInputState,
+  inputValidate,
+}: UseInputParms) => {
+  const [inputState, inputDispatch] = useReducer(inputReducer, state);
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
