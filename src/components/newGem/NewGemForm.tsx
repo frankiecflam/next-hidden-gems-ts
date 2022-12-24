@@ -43,7 +43,6 @@ const NewGemForm = ({ loggedInUserId }: { loggedInUserId: string }) => {
     onBlur: titleInputOnBlur,
     onReset: titleInputOnReset,
   } = useInput({
-    initialValue: "",
     inputValidate: (inputValue: string) => inputValue.trim().length > 0,
   });
 
@@ -54,7 +53,6 @@ const NewGemForm = ({ loggedInUserId }: { loggedInUserId: string }) => {
     onBlur: descriptionInputOnBlur,
     onReset: descriptionInputOnReset,
   } = useInput({
-    initialValue: "",
     inputValidate: (inputValue: string) => inputValue.trim().length > 0,
   });
 

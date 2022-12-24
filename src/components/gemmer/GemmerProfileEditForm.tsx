@@ -27,7 +27,11 @@ const GemmerProfileEditForm = ({
     onBlur: usernameInputOnBlur,
     onReset: usernameInputOnReset,
   } = useInput({
-    initialValue: gemmer.username,
+    state: {
+      inputValue: gemmer.username,
+      inputIsValid: true,
+      inputIsTouched: false,
+    },
     inputValidate: validateUsernameInput,
   });
 
@@ -38,7 +42,11 @@ const GemmerProfileEditForm = ({
     onBlur: bioInputOnBlur,
     onReset: bioInputOnReset,
   } = useInput({
-    initialValue: gemmer.bio,
+    state: {
+      inputValue: gemmer.bio,
+      inputIsValid: true,
+      inputIsTouched: false,
+    },
     inputValidate: (inputValue: string) => true,
   });
 
