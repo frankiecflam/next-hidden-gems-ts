@@ -14,7 +14,6 @@ const SignUpWithEmailAndPassword = () => {
     onChange: usernameInputOnChange,
     onReset: usernameInputOnReset,
   } = useInput({
-    initialValue: "",
     inputValidate: validateUsernameInput,
   });
 
@@ -23,7 +22,6 @@ const SignUpWithEmailAndPassword = () => {
     onChange: emailInputOnChange,
     onReset: emailInputOnReset,
   } = useInput({
-    initialValue: "",
     inputValidate: (inputValue: string) =>
       inputValue.trim().length > 3 && inputValue.includes("@"),
   });
@@ -32,7 +30,6 @@ const SignUpWithEmailAndPassword = () => {
     onChange: passwordInputOnChange,
     onReset: passwordInputOnReset,
   } = useInput({
-    initialValue: "",
     inputValidate: (inputValue: string) => inputValue.trim().length > 0,
   });
 
