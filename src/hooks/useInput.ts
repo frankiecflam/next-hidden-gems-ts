@@ -36,7 +36,7 @@ const inputReducer = (state: StateType, action: ActionType) => {
       return initialInputState;
 
     default:
-      return initialInputState;
+      throw new Error("Unhandled action type");
   }
 };
 
