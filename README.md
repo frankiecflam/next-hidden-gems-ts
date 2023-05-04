@@ -23,7 +23,7 @@ The is a rebuilt version of my first NextJS app, a multiple-page application ser
 It was rebuilt with TypeScript and React Query for better user experience during page switching. Initially, the project was built with React in JavaScript in Jun 2022.
 
 ### Project architecture
-![Project-Architecture](./project-screenshot/project-architecture.png)
+![Project-Architecture](./project-screenshot/Project-architecture.png)
 
 ### Project structure
 
