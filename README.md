@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
   - [Project background](#project-background)
+  - [Project architecture](#project-architecture)
   - [Project structure](#project-structure)
   - [Project tech stack](#project-tech-stack)
   - [Project screenshots](#project-screenshots)
@@ -20,6 +21,9 @@
 The is a rebuilt version of my first NextJS app, a multiple-page application serving as a social-media platform where users can share their hidden gems using images, follow each other and save any hidden gems they like in a collection for later retrieval.
 
 It was rebuilt with TypeScript and React Query for better user experience during page switching. Initially, the project was built with React in JavaScript in Jun 2022.
+
+### Project architecture
+![Project-Architecture](./project-screenshot/project-architecture.png)
 
 ### Project structure
 
@@ -84,6 +88,7 @@ TypeScript, NextJS, React, React Query, CSS and Firebase.
 - Live Site URL: [Hidden Gems](https://hiddengems-ts.vercel.app/)
 
 Here are the website and GitHub for the initial version of the app.
+
 - Live Site URL: [Hidden Gems (JS)](https://hiddengems.vercel.app/)
 - GitHub: [Hidden Gems(JS)](https://github.com/frankiecflam/next-hidden-gems)
 
